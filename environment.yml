@@ -1,0 +1,33 @@
+name: biomotion-glmsingle
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - setuptools
+  - wheel
+
+  # Core scientific Python stack
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - statsmodels
+  - joblib
+  - tqdm
+  - pyyaml
+  - h5py
+
+  # Neuroimaging
+  - nibabel
+  - nilearn
+
+  # Install packages that are best installed from GitHub / pip
+  - pip:
+      - git+https://github.com/cvnlab/GLMsingle.git
+      - git+https://github.com/Charestlab/pyslicetime.git
+      - rsatoolbox
