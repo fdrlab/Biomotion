@@ -101,7 +101,8 @@ Group-level masks were then created by retaining voxels present in the cortex RO
 Relevant scripts:
 
 ```text
-scripts/05_rois_masks/build_cortex_rois_gm_only.py and build_group_mask_from_rois.py
+scripts/05_rois_masks/build_cortex_rois_gm_only.py 
+scripts/05_rois_masks/build_group_mask_from_rois.py
 ```
 
 ### 7. Univariate Sanity Check
@@ -164,7 +165,8 @@ TFCE outputs were stored as corrected p-value maps, where `corrp = 1 - pFWE`.
 Relevant scripts:
 
 ```text
-scripts/09_group_inference_rsa/build_tfce_masks_and_qc_thresholds.py and group_tfce_two_group.py
+scripts/09_group_inference_rsa/build_tfce_masks_and_qc_thresholds.py 
+scripts/09_group_inference_rsa/group_tfce_two_group.py
 ```
 
 Group-level RSA inference and TFCE procedures were adapted from Thornton et al. (2019) and the accompanying code provided by the authors (https://osf.io/hp5wc/overview).
