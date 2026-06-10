@@ -1,41 +1,57 @@
-# Biomotion Project
+# Biomotion Study
 
-This repository contains the analysis pipeline for investigating the effects of acute lorazepam administration on neural representations of social biological motion using ultra-high-field 7T fMRI.
+This repository contains the analysis code (Python) and supporting data files required to reproduce the results of the study titled "TITLE", by Niko, Nahid, and Johannes Schultz, which investigated the effects of acute lorazepam administration on neural representations of social biological motion using 7T fMRI. The full fMRI dataset can be found on OpenNeuro (Link: __https://openneuro.org/datasets/__).
 
-The project combines GLMsingle-based single-trial beta estimation, univariate sanity checks, searchlight representational similarity analysis (RSA), split-half reliability assessment, and permutation-based threshold-free cluster enhancement (TFCE) group inference.
-
-This repository is intended to document and share the analysis code, not the full dataset. 
-The full BIDS dataset can be found at: https://openneuro.org/search/modality/mri?query=%7B%22modality_selected%22%3A%22mri%22%7D.
+The repository includes scripts for preprocessing, design matrix generation, GLMsingle-based single-trial beta estimation, univariate sanity checks, representational similarity analysis (RSA), reliability assessment, and group-level statistical inference.
 
 
-## Study Overview
+## Repository Structure
 
-The data come from a randomized, double-blind, placebo-controlled pharmacological fMRI study in healthy adult men. Participants received either 1 mg lorazepam or placebo before undergoing 7T fMRI while viewing dynamic point-light displays (PLDs) depicting social biological motion and scrambled-motion control stimuli.
+### `data/`
 
-The task included six experimental conditions:
+Contains supporting data files required to reproduce the analyses.
 
-- happy females
-- happy males
-- angry females
-- angry males
-- neutral females
-- scrambled motion
+- **`biomotion_ROI/`**: ROI masks and files used for ROI-restricted analyses.
+- **`design_matrices/`**: Example design matrices and design-matrix generation resources.
+- **`events_tsv/`**: Example BIDS-compatible event files used for task modeling.
+- **`model_RDMs/`**: Model representational dissimilarity matrices (RDMs) used in the representational similarity analyses.
+- **`unblinding_file.csv`**: Group assignment file used after completion of data collection and preprocessing.
 
-The main goal of the project was to test whether lorazepam alters multivoxel representational structure during the perception of biological motion and social-emotional interaction cues.
+### `scripts/`
+
+Contains all analysis code used in the project.
+
+- **`01_preprocessing/`**: Scripts related to MRI preprocessing and data organization.
+- **`02_design_matrices/`**: Generation and quality control of condition-level design matrices.
+- **`03_smoothing/`**: Spatial smoothing of preprocessed BOLD data.
+- **`04_GLMsingle/`**: Single-trial beta estimation using GLMsingle.
+- **`05_ROIs_Masks/`**: Generation of cortex masks, ROI masks, and group masks.
+- **`06_univar_sanity_analysis/`**: Univariate biological-motion versus scrambled-motion sanity checks.
+- **`07_model_RDMs/`**: Construction of model representational dissimilarity matrices.
+- **`08_searchlight_RSA/`**: Searchlight representational similarity analyses and reliability estimation.
+- **`09_group_inference_RSA/`**: Group-level statistical inference using permutation testing and threshold-free cluster enhancement (TFCE).
 
 
 ## Final Analysis Sample
 
-The original dataset contained 63 participants. Several participants were excluded before the final pipeline:
-
-e.g.:
-- one participant was excluded because of abnormal behavior during scanning
-- two participants were excluded because run-length mismatches after dummy-TR handling would have required removing substantial task data in the selected aCompCor GLMsingle branch
+The original dataset contained 63 participants. Several participants were excluded before the final pipeline (sub-114, sub-139, and sub-159):
 
 The final primary analysis sample consisted of:
 
 - lorazepam: n = 29
 - placebo: n = 28
+
+
+## Installation
+
+The analysis environment can be created using the provided Conda environment file:
+
+```bash
+conda env create -f environment.yml
+conda activate biomotion-glmsingle
+```
+
+Some analyses additionally require external neuroimaging tools installed outside the Conda environment, including fMRIPrep and FSL.
 
 
 ## Pipeline Overview
@@ -137,7 +153,7 @@ Settings:
 - rank-based regression RSA
 - cov20 cortical mask
 - k = 60 nearest valid voxels
-- maximum voxel distance constraint=5
+- maximum voxel distance constraint = 5 voxels
 
 Relevant script:
 
@@ -157,7 +173,7 @@ scripts/08_searchlight_rsa/summarize_searchlight_reliability.py
 
 ### 11. TFCE Group Mask and Inference
 
-A 100% coverage TFCE mask using the coverage group masks (cov20) was created.
+A TFCE-safe group mask was created by retaining voxels with full subject coverage within the cov20 cortical analysis mask.
 Group-level inference was performed on subject-level RSA beta maps using two-sample permutation testing with TFCE. Subject maps were smoothed with approximately 6 mm FWHM before inference.
 
 TFCE outputs were stored as corrected p-value maps, where `corrp = 1 - pFWE`.
@@ -181,17 +197,11 @@ Relevant script:
 scripts/09_group_inference_rsa/biomotion-roi_tfce_mask.py
 ```
 
+## Reproducing the Analyses
 
-## Installation
+After installing the Conda environment, the analyses can be reproduced by running the scripts in numerical order within the `scripts/` directory. Each folder corresponds to one major stage of the analysis pipeline.
 
-The analysis environment can be created using the provided Conda environment file:
-
-```bash
-conda env create -f environment.yml
-conda activate biomotion-glmsingle
-```
-
-Some analyses additionally require external neuroimaging tools installed outside the Conda environment, including fMRIPrep and FSL.
+Most scripts require project-specific file paths to be updated before execution. Example event files, design matrices, and model RDMs are provided in the `data/` directory.
 
 
 ## References
