@@ -11,22 +11,22 @@ The repository includes scripts for preprocessing, design matrix generation, GLM
 
 Contains supporting data files required to reproduce the analyses.
 
-- **`biomotion_ROI/`**: ROI masks and files used for ROI-restricted analyses.
-- **`design_matrices/`**: Example design matrices and design-matrix generation resources.
-- **`events_tsv/`**: Example BIDS-compatible event files used for task modeling.
-- **`model_RDMs/`**: Model representational dissimilarity matrices (RDMs) used in the representational similarity analyses.
-- **`unblinding_file.csv`**: Group assignment file used after completion of data collection and preprocessing.
+- **`biomotion_ROI/`**: Functional ROI biomotion mask from an independent study.
+- **`design_matrices/`**: Design matrices and accompanying .json files.
+- **`events_tsv/`**: Event files used for design-matrix generation.
+- **`model_RDMs/`**: Model representational dissimilarity matrices (RDMs) used in RSA.
+- **`unblinding_file.csv`**: Group assignment (Lorazepam or Placebo).
 
 ### `scripts/`
 
 Contains all analysis code used in the project.
 
-- **`01_preprocessing/`**: Scripts related to MRI preprocessing and data organization.
+- **`01_preprocessing/`**: fMRIPrep slurm scripts (with and without surface reconstruction).
 - **`02_design_matrices/`**: Generation and quality control of condition-level design matrices.
-- **`03_smoothing/`**: Spatial smoothing of preprocessed BOLD data.
+- **`03_smoothing/`**: Spatial smoothing (3 mm FWHM) of preprocessed BOLD data.
 - **`04_GLMsingle/`**: Single-trial beta estimation using GLMsingle.
-- **`05_ROIs_Masks/`**: Generation of cortex masks, ROI masks, and group masks.
-- **`06_univar_sanity_analysis/`**: Univariate biological-motion versus scrambled-motion sanity checks.
+- **`05_ROIs_Masks/`**: Generation of cortex masks and group masks.
+- **`06_univar_sanity_analysis/`**: Univariate biological-motion versus scrambled-motion sanity check.
 - **`07_model_RDMs/`**: Construction of model representational dissimilarity matrices.
 - **`08_searchlight_RSA/`**: Searchlight representational similarity analyses and reliability estimation.
 - **`09_group_inference_RSA/`**: Group-level statistical inference using permutation testing and threshold-free cluster enhancement (TFCE).
