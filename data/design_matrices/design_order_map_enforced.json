@@ -1,0 +1,23 @@
+{
+  "columns_assumed": [
+    "happy_females",
+    "happy_males",
+    "angry_females",
+    "angry_males",
+    "neutral_females",
+    "scrambled"
+  ],
+  "label_to_col": {
+    "happy_females": 0,
+    "happy_males": 1,
+    "angry_females": 2,
+    "angry_males": 3,
+    "neutral_females": 4,
+    "scrambled": 5
+  },
+  "upsample": 1,
+  "tr": 1.9,
+  "dt": 1.9,
+  "n_trim": 5,
+  "notes": "No upsampling: design is built on the native TR grid. Columns are enforced to canonical order. Mapping is identity."
+}

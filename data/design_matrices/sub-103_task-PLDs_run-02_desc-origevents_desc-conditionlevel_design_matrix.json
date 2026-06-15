@@ -1,0 +1,54 @@
+{
+  "subject": "sub-103",
+  "run": "02",
+  "tr": 1.9,
+  "upsample": 1,
+  "dt": 1.9,
+  "n_trim": 5,
+  "bold_path": "/Volumes/T7/preprocessed/sub-103/func/sub-103_task-PLDs_run-02_space-MNI152NLin2009cAsym_res-1.7_desc-preproc_bold.nii.gz",
+  "events_path": "/Volumes/T7/BIDS_data/derivatives/events_original/sub-103/func/sub-103_task-PLDs_run-02_events.tsv",
+  "n_tr_original": 311,
+  "n_tr_modeled": 306,
+  "T_seconds": 581.4,
+  "n_timepoints": 306,
+  "columns": [
+    "happy_females",
+    "happy_males",
+    "angry_females",
+    "angry_males",
+    "neutral_females",
+    "scrambled"
+  ],
+  "counts_events": {
+    "happy_females": 20,
+    "happy_males": 15,
+    "angry_females": 19,
+    "angry_males": 17,
+    "neutral_females": 19,
+    "scrambled": 18
+  },
+  "counts_design_impulses": {
+    "happy_females": 20,
+    "happy_males": 15,
+    "angry_females": 19,
+    "angry_males": 17,
+    "neutral_females": 19,
+    "scrambled": 18
+  },
+  "counts_design_nonzero_bins": {
+    "happy_females": 20,
+    "happy_males": 15,
+    "angry_females": 19,
+    "angry_males": 17,
+    "neutral_females": 19,
+    "scrambled": 18
+  },
+  "collisions_per_label": {
+    "happy_females": 0,
+    "happy_males": 0,
+    "angry_females": 0,
+    "angry_males": 0,
+    "neutral_females": 0,
+    "scrambled": 0
+  }
+}
