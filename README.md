@@ -1,6 +1,6 @@
 # Biomotion Study
 
-This repository contains the analysis code (Python) and supporting data files required to reproduce the results of the study titled "TITLE", by Niko, Nahid, and Johannes Schultz, which investigated the effects of acute lorazepam administration on neural representations of social biological motion using 7T fMRI. The full fMRI dataset can be found on OpenNeuro (Link: __https://openneuro.org/datasets/ds007953__).
+This repository contains the analysis code (Python) and supporting data files required to reproduce the results of the study titled "Acute lorazepam effects on social interaction processing in 7T fMRI", by Niko Britt, Nahid Hasan, and Johannes Schultz, which investigated the effects of acute lorazepam administration on neural representations of social biological motion using 7T fMRI. The full fMRI dataset can be found on OpenNeuro (Link: __https://openneuro.org/datasets/ds007953__).
 
 The repository includes scripts for preprocessing, design matrix generation, GLMsingle-based single-trial beta estimation, univariate sanity checks, representational similarity analysis (RSA), reliability assessment, and group-level statistical inference.
 
